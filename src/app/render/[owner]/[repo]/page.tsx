@@ -36,7 +36,7 @@ export default function RenderPage() {
             name: item.name,
             path: item.path,
             type: item.type === 'dir' ? 'dir' : 'file',
-            sha: item.sha,
+            sha: item.sha || undefined,
           }));
           setFiles(fileNodes);
         }
@@ -59,7 +59,8 @@ export default function RenderPage() {
       const content = await apiService.getRepoContent(owner, repo, file.path);
       
       if (!Array.isArray(content) && content.content) {
-        const decoded = Buffer.from(content.content, 'base64').toString('utf-8');
+        // Use atob for base64 decoding in browser instead of Buffer
+        const decoded = atob(content.content);
         setFileContent(decoded);
       }
     } catch (error) {

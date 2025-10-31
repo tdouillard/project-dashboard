@@ -56,13 +56,22 @@ export class GithubApiService implements ApiService {
 
   async getRepoContent(owner: string, repo: string, path: string = ''): Promise<RepoContent[] | RepoContent> {
     try {
+      // Sanitize path to prevent directory traversal
+      const sanitizedPath = path.replace(/\.\./g, '').replace(/^\/+/, '');
+      
       const response = await this.octokit.repos.getContent({
         owner,
         repo,
-        path,
+        path: sanitizedPath,
       });
 
-      return response.data as RepoContent[] | RepoContent;
+      // Validate response structure
+      const data = response.data;
+      if (!data || typeof data !== 'object') {
+        throw new Error('Invalid API response structure');
+      }
+
+      return data as RepoContent[] | RepoContent;
     } catch (error) {
       console.error('Error fetching repository content:', error);
       throw error;
