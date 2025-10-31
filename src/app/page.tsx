@@ -53,33 +53,33 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <header className="bg-white dark:bg-gray-800 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+    <div className="page-container">
+      <header className="page-header">
+        <div className="header-content">
+          <h1 className="header-title">
             Project Dashboard
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 mt-2">
+          <p className="header-subtitle">
             Projects by {config.githubUsername}
           </p>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="main-content">
         {loading ? (
-          <div className="flex items-center justify-center h-64">
-            <div className="text-xl text-gray-600 dark:text-gray-400">
+          <div className="loading-container">
+            <div className="loading-text">
               Loading projects...
             </div>
           </div>
         ) : projects.length === 0 ? (
-          <div className="flex items-center justify-center h-64">
-            <div className="text-xl text-gray-600 dark:text-gray-400">
+          <div className="empty-state-container">
+            <div className="empty-state-text">
               No projects found
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid-container">
             {projects.map((project) => (
               <ProjectTile
                 key={project.id}
