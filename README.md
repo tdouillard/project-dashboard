@@ -5,11 +5,37 @@ A modern React Next.js dashboard that displays all GitHub projects from a config
 ## Features
 
 - 📊 **Dashboard View**: Grid of project tiles with key information
-- 📖 **Project Details**: Click any tile to view README and code information
-- 🎨 **Render View**: VS Code-like interface with file explorer and preview panel
+  - Project name and description
+  - Programming language with visual indicator
+  - Star count
+  - Topics/tags (up to 3 displayed)
+  - Responsive grid layout (1-3 columns based on screen size)
+
+- 📖 **Project Details Modal**: Click any tile to view detailed information
+  - **README Tab**: Full README content with markdown rendering
+  - **Code Tab**: Direct link to GitHub repository
+  - Responsive modal with smooth animations
+
+- 🎨 **Render View**: VS Code-like interface for project exploration
+  - **File Explorer Panel**: Browse repository structure
+  - **Code Editor Panel**: View file contents with syntax highlighting
+  - **Preview Panel**: Project information and GitHub link
+  - "Back to Dashboard" navigation
+
 - 🔄 **API Abstraction**: Isolated API layer to easily switch between GitHub/GitLab
+  - Provider-agnostic interface
+  - Easy to extend with new providers
+  - Centralized error handling
+
 - 🎨 **Modern UI**: Built with Tailwind CSS and dark mode support
+  - Fully responsive design
+  - Dark mode compatible
+  - Smooth transitions and hover effects
+
 - ⚡ **Fast**: Built with Next.js 16 and React 19
+  - Turbopack for ultra-fast builds
+  - Optimized bundle size
+  - Server-side rendering support
 
 ## Tech Stack
 
@@ -59,6 +85,21 @@ npm run dev
 ```
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Demo with Mock Data
+
+To see all features without requiring GitHub API access, visit the demo page:
+
+```bash
+npm run dev
+# Visit http://localhost:3000/demo
+```
+
+The demo page showcases:
+- Project tiles with various languages and topics
+- Project detail modal with README rendering
+- Code view tab
+- Navigation to render view
 
 ## Project Structure
 
